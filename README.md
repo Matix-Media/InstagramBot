@@ -6,3 +6,5 @@ Like random Posts for more Likes and Follower
 # How to use
 1. Start script.
 2. The script tells you what to do.
+
+### For help write to: support@matix-media.de
