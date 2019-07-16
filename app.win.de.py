@@ -6,7 +6,6 @@ import os
 title = lambda: os.system('title InstaBot v15.7.19')
 title()
 class msgs:
-    
     def welcome():
         print('---====::::INSTAGRAM BOT::::====---')
         print('                                   ')
@@ -22,16 +21,16 @@ class InstagramBot:
     def __init__(self,username,password):
         self.username = username
         self.password = password
-        print("IB-C:: Starting Firefox Browser...")
+        print("IB-C:: Starte den Firefox Browser...")
         self.bot = webdriver.Firefox()
-        print("IB-C:: Firefox Browser started!")
+        print("IB-C:: Firefox Browser gestartet!")
 
     def login(self):
         bot = self.bot
-        print("IB-C:: Navigate to the login page of Instagram...")
+        print("IB-C:: Navigiere zur Login-Page von Instagram...")
         bot.get('https://www.instagram.com/accounts/login/')
         time.sleep(3)
-        print("IB-C:: Successfully navigated to the login page of Instagram!")
+        print("IB-C:: Erfolgreich zur Login-Page von Instagram Navigiert!")
         username_box = bot.find_element_by_name('username')
         password_box = bot.find_element_by_name('password')
         username_box.clear()
@@ -39,28 +38,28 @@ class InstagramBot:
         username_box.send_keys(self.username)
         password_box.send_keys(self.password)
         password_box.send_keys(Keys.RETURN)
-        print("IB-C:: Try to login...")
+        print("IB-C:: Versuche Einzuloggen...")
         time.sleep(3)
-        print("IB-C:: Login data sent!")
+        print("IB-C:: Login-Daten abgeschickt!")
     
     def gettag(self,hashtag,scrolls):
         bot = self.bot
-        print("IB-C:: Navigate to the hashtag '#"+hashtag+"'...")
+        print("IB-C:: Navigiere zum Hashtag '#"+hashtag+"'...")
         bot.get('https://www.instagram.com/explore/tags/'+hashtag+'/')
         time.sleep(3)
-        print("IB-C:: Successful to hashtag '#"+hashtag+"' navigated!")
+        print("IB-C:: Erfolgreich zum Hashtag '#"+hashtag+"' Navigiert!")
         
         
 
     def likeImages(self,scrolls):
         done_scrolls = 0
         bot = self.bot
-        print("IB-C:: Search for all Links...")
+        print("IB-C:: Suche alle Links...")
         links = []
         for i in range(1,scrolls):
-            print("IB-C:: Scroll to the bottom of the page (" + str(done_scrolls + 1) + " of " + str(scrolls) + " Scrolls)...")
+            print("IB-C:: Scrolle zum Ende der Seite (" + str(done_scrolls + 1) + " von " + str(scrolls) + " Scrolls)...")
             bot.execute_script('window.scrollTo(0,document.body.scrollHeight)')
-            print("IB-C:: At the end of the page!", end='\r')
+            print("IB-C:: Am ende der Seite!", end='\r')
             done_scrolls = done_scrolls + 1
             time.sleep(1)
 
@@ -75,13 +74,13 @@ class InstagramBot:
                 found_links_count = found_links_count + 1
                 print("IB-C:: " + str(elem.get_attribute('href')), end='\r')
 
-            print("IB-C:: Found links: " + str(found_links_count) + " Links                                                ")
+            print("IB-C:: Founded Links: " + str(found_links_count) + "                                                 ")
         time.sleep(3)
 
         links_count = 0
         links_used_count = 0
         links_used = []
-        print("IB-C:: ALL LINKS:")
+        print("IB-C:: ALLE LINKS:")
         for elem2 in links:
             links_count = links_count + 1
             
@@ -93,37 +92,37 @@ class InstagramBot:
                     links_used.append(link_str)
 
         print('')
-        print("IB-C:: Found links: " + str(links_count) + " Links")
+        print("IB-C:: Gefundene Links: " + str(links_count))
         print('')
-        print("IB-C:: Links to posts: " + str(links_used_count) + "Links")
+        print("IB-C:: Links zu Posts: " + str(links_used_count))
         print('')
         print('')
-        print("IB-C:: Start working on links...")
+        print("IB-C:: Beginne Links abzuarbeiten...")
         liked_posts = 0
         links_error = 0
         for link in links_used:
             print('')
             print('__________________________________________________________')
-            print('IB-C:: Post ' + str(liked_posts + 1) + ' of ' + str(links_used_count) + ' Posts:')
+            print('IB-C:: Beitrag ' + str(liked_posts + 1) + ' von ' + str(links_used_count) + ' Beiträgen:')
             print('IB-C:: Lädt...', end='\r')
             bot.get(link)
             time.sleep(4)
-            print("IB-C:: Try to Like Post '" + link + "'...")
+            print("IB-C:: Versuche Post '" + link + "' zu Liken...")
             try:
                 bot.find_element_by_class_name('glyphsSpriteHeart__outline__24__grey_9').click()
-                print("IB-C:: Post '" + link + "' Successfully liked!")
+                print("IB-C:: Post '" + link + "' Erfolgreich Geliket!")
                 time.sleep(1)
                 liked_posts = liked_posts + 1
             except Exception as ex:
-                print("IB-C:: Error while liking the post (Maybe the post was deleted or the link is not available anymore or you already liked this post): ")
+                print("IB-C:: Fehler beim Liken des Posts (Eventuell wurde der Beitrag Gelöscht oder der Link ist nicht mehr Verfügbar oder du hast diesen Beitrag schon geliked): ")
                 print(ex)
-                print("IB-C:: Previous mistakes when liking " + str(liked_posts) + " Posts: " + str(links_error) + " Errors")
-                print("IB-C:: Try again in 30 seconds at the next post!", end='\r')
+                print("IB-C:: Bisherige Fehler beim Liken von " + str(liked_posts) + " Posts: " + str(links_error) + " Fehler")
+                print("IB-C:: Versuche es in 30 sec beim nächsten Post erneut!", end='\r')
                 time.sleep(1)
                 links_error = links_error + 1
                 for i in range(1,29):
                     time.sleep(1)
-                    print("IB-C:: Try again in " + str(30 - i) + " seconds at the next post!", end='\r')
+                    print("IB-C:: Versuche es in " + str(30 - i) + " sec beim nächsten Post erneut!", end='\r')
                     
                     
                 print('')
@@ -131,7 +130,7 @@ class InstagramBot:
         clear = lambda: os.system('cls')
         clear()
         msgs.welcome()
-        print(str(links_used_count - links_error) + ' of ' + str(links_used_count) + ' Posts liked successfully!')
+        print(str(links_used_count - links_error) + ' von ' + str(links_used_count) + ' Beiträge erfolgreich geliked!')
         bot.get('https://www.instagram.com/'+self.username+'/')
         input("IB-C <<>>")
         bot.quit()
@@ -147,29 +146,29 @@ msgs.welcome()
 time.sleep(2)
 
 #inputs
-input_username = input("Your username: ")
-print("Your username is '"+input_username+"'")
+input_username = input("Ihr Benutzername: ")
+print("Ihr Benutzername ist '"+input_username+"'")
 
 print('')
-input_password = input("Your password for '"+input_username+"': ")
-print("Your password for the user '"+input_username+"' is '"+input_password+"'")
+input_password = input("Ihr Passwort für '"+input_username+"': ")
+print("Ihr Passwort zu dem Benutzer '"+input_username+"' ist '"+input_password+"'")
 
 print('')
-print('The 15 most popular hashtags on Instagram (as of 15.07.2019):')
+print('Die 15 beliebtesten Hashtags auf Instagram (stand 15.07.2019):')
 fav_hashtags = ['#love', '#instagood', '#photooftheday', '#fashion', '#beautiful', '#happy', '#cute', '#tbt', '#like4like', '#followme', '#picoftheday', '#follow', '#me', '#selfie', '#summer']
 for hashtag in fav_hashtags:
     print('  ★ '+hashtag)
 
 print('')
 input_hashtag = input("Hashtag: #")
-print("Your entered hashtag is '#"+input_hashtag+"'")
+print("Ihr eingegebener Hashtag ist '#"+input_hashtag+"'")
 
 print('')
-input_scrolls = round(int(input("Posts to be liked (At least 3): ")) / 5)
-print("It will be about " + str(input_scrolls * 6) + " Liked posts!")
+input_scrolls = round(int(input("Zu Likende Beiträge (min. 3): ")) / 5)
+print("Es werden ungefähr " + str(input_scrolls * 5) + " Beiträge geliked!")
 print('')
 print('')
-print('Starting InstagramBot by Matix Media, Inc. ...')
+print('Starte InstagramBot by Matix Media, Inc. ...')
 time.sleep(3)
 clear()
 
