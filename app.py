@@ -94,7 +94,7 @@ class InstagramBot:
         print('')
         print("IB-C:: Found links: " + str(links_count) + " Links")
         print('')
-        print("IB-C:: Links to posts: " + str(links_used_count) + "Links")
+        print("IB-C:: Links to posts: " + str(links_used_count) + " Links")
         print('')
         print('')
         print("IB-C:: Start working on links...")
