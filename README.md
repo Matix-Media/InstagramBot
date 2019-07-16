@@ -2,7 +2,7 @@
 Like random Posts for more Likes and Follower
 
 ## Python 3, Requered Selenium and geckodriver
-https://github.com/mozilla/geckodriver/releases
+https://github.com/mozilla/geckodriver/releases \r
 https://pypi.org/project/selenium/
 
 # How to use
