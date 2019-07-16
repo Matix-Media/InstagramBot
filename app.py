@@ -18,3 +18,5 @@ if os == "win":
     if lang == "de":
         exec(open("app.win.de.py").read())
 
+
+        
