@@ -1,7 +1,7 @@
 # InstagramBot
 Like random Posts for more Likes and Follower
 
-## Python 3, Requered Selenium and geckodriver
+## Python 3, requires Selenium and geckodriver
 https://github.com/mozilla/geckodriver/releases
 
 https://pypi.org/project/selenium/
